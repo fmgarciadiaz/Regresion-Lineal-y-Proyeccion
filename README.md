@@ -51,8 +51,9 @@ $\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}
 
 11. Lo interesante del concepto de ángulo (o de producto interno) es que nos da una forma de medir cuán "paralelo" es un vector respecto a otro. Cuándo el ángulo es cero, un vector puede escribise como múltiplo de otro. Y si el ángulo es mayor, se hacen cada vez menos "parecidos"
 
-12. Dentro de la geometría euclidiana el producto interior puede escribirse muy fácilmente. Sin embargo, no es posible tener
-un producto interno compatible con la distancia de Manhattan, y por lo tanto en ese caso no tenemos la idea de ángulo. (motivos dificiles)
+![](images/angulos.png)
+
+12. ACA Dentro de la geometría euclidiana el producto interior puede escribirse muy fácilmente. Sin embargo, no es posible tener un producto interno compatible con la distancia de Manhattan, y por lo tanto en ese caso no tenemos la idea de ángulo. (motivos dificiles)
 
 
 11. Dirán: qué tiene que ver todo esto con una regresión lineal? Resulta que todo! Para verlo bien consideremos como es el MCO cuando solamente hay una variable (y), un regresor (x) sin intercepto. Tomemos además dos observaciones: para x=1 se observó y=2 y para x=2, y=5
@@ -75,10 +76,12 @@ $x=(x_1, x_2)=(1,2)$
 
 14. Como dijimos, en el mundo euclidiano el ángulo es función del producto interior, definido como suma de productos de los componentes de cada vector. El ángulo es recto cuando este último se anula. Con MCO el vector de errores es perpendicular a la recta y por eso (-0,4 * 2.4)  + (0,2 * 4,8) = 0
 
-12. Comparado, el MAD usa la distancia Mahattan y por lo tanto el y estimado, el punto más cercano de la recta by al punto y, es distinto. Por este motivo, el B es también distinto. El error ya no es ortogonal, porque Yestimado no es una proyección. De hecho, no hay un producto interior compatible y por ende ni siquiera es posible definir la covarianza de dos vectores.
+![](images/MCO1.png)
+
+15. Comparado, el MAD usa la distancia Mahattan y por lo tanto el y estimado, el punto más cercano de la recta by al punto y, es distinto. Por este motivo, el B es también distinto. El error ya no es ortogonal, porque Yestimado no es una proyección. De hecho, no hay un producto interior compatible y por ende ni siquiera es posible definir la covarianza de dos vectores.
 
 ![](images/MCO2.png)
 
-13. Este ejemplo con dos variables se puede generalizar en muchos niveles. Con más regresores, con más observaciones, la idea es exactamente la misma. más aún, si en lugar de tomar vectores de puntos tomamos variables aleatorias la geometría se generaliza. Para eso en lugar de espacios euclidianos hay que usar espacios de Hilbert. 
+16. Este ejemplo con dos variables se puede generalizar en muchos niveles. Con más regresores, con más observaciones, la idea es exactamente la misma. más aún, si en lugar de tomar vectores de puntos tomamos variables aleatorias la geometría se generaliza. Para eso en lugar de espacios euclidianos hay que usar espacios de Hilbert. 
 
-14. Los conceptos son los mismos: distancia, producto interior
+17. Los conceptos son los mismos: distancia, producto interior
