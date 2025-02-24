@@ -24,7 +24,7 @@ MDA: minimiza la suma de desviaciones absolutas
 
 <img src="images/Distancia-euclides.png" width="50%">
 
-<img src="images/Euclidiana.png" width="10%">
+<img src="images/Euclidiana.png" width="50%">
 
 6. La Manhattan es la suma de las diferencias de cada coordenada. Eso implica que los puntos equidistantes forman rombos en lugar de círculos: rarísimo!
 
