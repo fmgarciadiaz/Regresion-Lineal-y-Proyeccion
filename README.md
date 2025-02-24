@@ -69,15 +69,20 @@ $x=(x_1, x_2)=(1,2)$
 
 12. La recta es el espacio de los puntos barridos por x con distintos beta. Estimar es buscar el punto de esa recta más cercano a Y. Es lo mismo que encontrar un beta que multiplique a (1,2) dando el punto más cercano a (2,5). Y como hablamos de cercanía hay que elegir una distancia!
 
+![](images/MCO-step2.png)
+
 13. MCO usa la distancia de todos los días: la perpendicular de Y a la recta da la estimacion: proyección ortogonal de Y sobre la recta. El segmento perpendicular es el vector de errores e=(2-2.4, 5-4,8)=(-0,4, 0,2). Y el beta es lógicamente 2,4 ya que 2,4 * (1, 2) = (2,4, 4,8)
 
-![](images/MCO-step2.png)
+![](images/MCO-step3.png)
+
 
 14. Como dijimos, en el mundo euclidiano el ángulo es función del producto interior, definido como suma de productos de los componentes de cada vector. El ángulo es recto cuando este último se anula. Con MCO el vector de errores es perpendicular a la recta y por eso (-0,4 * 2.4)  + (0,2 * 4,8) = 0
 
+![](images/MCO-step4.png)
+
 12. Comparado, el MAD usa la distancia Mahattan y por lo tanto el y estimado, el punto más cercano de la recta by al punto y, es distinto. Por este motivo, el B es también distinto. El error ya no es ortogonal, porque Yestimado no es una proyección. De hecho, no hay un producto interior compatible y por ende ni siquiera es posible definir la covarianza de dos vectores.
 
-![](images/MCO2.png)
+![](images/MCO-step5.png)
 
 13. Este ejemplo con dos variables se puede generalizar en muchos niveles. Con más regresores, con más observaciones, la idea es exactamente la misma. más aún, si en lugar de tomar vectores de puntos tomamos variables aleatorias la geometría se generaliza. Para eso en lugar de espacios euclidianos hay que usar espacios de Hilbert. 
 
