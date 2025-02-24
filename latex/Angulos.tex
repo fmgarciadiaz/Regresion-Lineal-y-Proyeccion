@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{array} % Para alinear en fila
+
+\begin{document}
+	
+	\begin{center}
+		\begin{tabular}{c c c}
+			% Primera figura: Vectores con ángulo 0
+			\begin{tikzpicture}[scale=1]
+				% Dibujar ejes
+				\draw[->] (-1,0) -- (3,0) node[right] {$x$};
+				\draw[->] (0,-1) -- (0,3) node[above] {$y$};
+				
+				% Dibujar vectores
+				\draw[->,thick,blue] (0,0) -- (2,1) node[above] {$\vec{a}$};
+				\draw[->,thick,red] (0,0) -- (3,1.5) node[above] {$\vec{b}$};
+			\end{tikzpicture} 
+			&
+			% Segunda figura: Vectores con ángulo 15 grados
+			\begin{tikzpicture}[scale=1]
+				% Dibujar ejes
+				\draw[->] (-1,0) -- (3,0) node[right] {$x$};
+				\draw[->] (0,-1) -- (0,3) node[above] {$y$};
+				
+				% Dibujar vectores con 15 grados de diferencia
+				\draw[->,thick,blue] (0,0) -- (2,1) node[above] {$\vec{a}$};
+				\draw[->,thick,red] (0,0) -- (2.1,1.6) node[above] {$\vec{b}$};
+				
+				% Dibujar semicírculo para ángulo de 15°
+				\draw[thick] (0.8,0.4) arc (27:37:1);
+				\node at (1,0.2) {\small $15^\circ$};
+			\end{tikzpicture} 
+			&
+			% Tercera figura: Vectores perpendiculares (CORREGIDA)
+			\begin{tikzpicture}[scale=1]
+				% Dibujar ejes
+				\draw[->] (-1,0) -- (3,0) node[right] {$x$};
+				\draw[->] (0,-1) -- (0,3) node[above] {$y$};
+				
+				% Dibujar vectores perpendiculares
+				\draw[->,thick,blue] (0,0) -- (2,1) node[above] {$\vec{a}$};
+				\draw[->,thick,red] (0,0) -- (-1,2) node[left] {$\vec{b}$};
+				
+				% Dibujar ángulo de 90° entre a y b (CORRECTO)
+				\draw[thick] (0.6,0.3) arc (26.57:116.57:0.7); % Arco ajustado
+				\node at (0.3,1) {\small $90^\circ$}; % Posición corregida
+			\end{tikzpicture} 
+			\\
+			{\small $\vec{b}$ un número por $\vec{a}$} & 
+			{\small $\vec{b}$ casi un número por $\vec{a}$} & 
+			{\small $\vec{b}$ muy distinto a $\vec{a}$ por un número}
+		\end{tabular}
+	\end{center}
+	
+\end{document}
