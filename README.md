@@ -30,16 +30,17 @@ MDA: minimiza la suma de desviaciones absolutas
 
 <img src="images/Manhattan.png" width="50%">
 
-8. La distancia entre un punto (Y) y una recta es la mínima entre Y con cada punto sobre la recta. Y acá la primera clave: el punto que minimiza la distancia depende de la distancia usemos! Con la euclidiana el punto es Pe, con Manhattan Pm. 
+8. Por su lado la distancia entre un punto Y y una recta es la mínima con cada punto sobre la recta. Clave #1: veremos que estimar linealmente es algo muy parecido a encontrar dicho punto. Clave #2: vean que el punto mínimo depende de la métrica: euclidiana -> Pe, Manhattan -> Pm!
 
 <img src="images/Comaparacion2.png" width="50%">
 
 9. Notemos que con la euclidiana Pm está más lejos que Pe porque se ubica sobre un círculo mayor. Pero más cerca con 
-Manhattan porque está en un rombo más chico. Parece claro que la euclidiana es la que todos tenemos en mente cuando hablamos de distancia cotidianamente.
+Manhattan porque está en un rombo más chico. ¿Qué opción suena más "natural"? En general, la que tenemos en mente
+cotindeanamente es la euclidiana
 
 <img src="images/Comaparacion2.png" width="50%">
 
-10. Noten que el segmento entre Y y Pe es perpendicular a la recta (ángulo de 90): Pe es la "proyección ortogonal" de Y. La idea de ángulo es otra noción clave y se asocia a un producto interior. La forma en que se define este producto *también* depende de cómo medimos la distancia
+10. Noten que el segmento entre Y y Pe es *perpendicular* a la recta (ángulo de 90): Pe es la "proyección ortogonal" de Y. La idea de ángulo es otra noción clave y se asocia a un producto interior. Este último *también* depende de cómo medimos la distancia
 
 Producto interior de A con B
 
@@ -49,15 +50,14 @@ es decir
 
 $\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$
 
-
-11. Lo interesante del concepto de ángulo (o de producto interno) es que nos da una forma de medir cuán "paralelo" es un vector respecto a otro. Cuándo el ángulo es cero, un vector puede escribise como múltiplo de otro. Y si el ángulo es mayor, se hacen cada vez menos "parecidos"
+11. Lo interesante del concepto de ángulo (o de producto interno) es que nos da una forma de medir cuán "paralelos" son dos vectores. Cuándo el ángulo es cero, un vector puede escribise como múltiplo de otro. Y si el ángulo es mayor, se hacen cada vez menos "parecidos"
 
 ![](images/angulos.png)
 
-12. ACA Dentro de la geometría euclidiana el producto interior puede escribirse muy fácilmente. Sin embargo, no es posible tener un producto interno compatible con la distancia de Manhattan, y por lo tanto en ese caso no tenemos la idea de ángulo. (motivos dificiles)
+12. En un espacio euclidiano el producto interior se escribe fácilmente: es la suma del producto de dos vectores componente a componente. Por motivos más complejos de los que entran en est post, no hay producto interior compatible 
+con la Manhattan; tampoco hay definición de ángulo.
 
-
-11. Dirán: qué tiene que ver todo esto con una regresión lineal? Resulta que todo! Para verlo bien consideremos como es el MCO cuando solamente hay una variable (y), un regresor (x) sin intercepto. Tomemos además dos observaciones: para x=1 se observó y=2 y para x=2, y=5
+11. Dirán: qué tiene que ver todo esto con una regresión lineal? Todo! Para verlo fácilmente consideremos el MCO con una sola variable (y) y un regresor (x), sin intercepto. Tomemos dos observaciones: para x=1 se observó y=2 y para x=2, y=5
 
 $y=\beta x + e$ 
 
@@ -65,15 +65,15 @@ $y=(y_1, y_2)=(2,5)$
 
 $x=(x_1, x_2)=(1,2)$
 
-11. La ventaja de este modelo de juguete es que podemos representarlo exactamente igual que a los ejemplos: en las ordenadas va la primera observación y en las abcisas la segunda. Entonces y es el punto (2,5), y beta * x forma una recta desde el origen que pasa por x=(1,2).
+11. La bueno de este modelo de juguete es que podemos representarlo exactamente igual que antes: en las abcisas pongamos la primera observación y en las ordenadas la segunda. Entonces y es el vector (2,5), y beta * x genera una recta desde el origen que pasa por x=(1,2).
 
 <img src="images/MCO-step1.png" width="50%">
 
-12. La recta es el espacio de los puntos barridos por x con distintos beta. Estimar es buscar el punto de esa recta más cercano a Y. Es lo mismo que encontrar un beta que multiplique a (1,2) dando el punto más cercano a (2,5). Y como hablamos de cercanía hay que elegir una distancia!
+12. La recta es el espacio que representa los puntos barridos por x con cada beta. Y acá la clave: estimar es minimizar la distancia a y. Es lo mismo que encontrar un beta que por (1,2) de el punto más cercano a (2,5). Entonces hay que elegir qué distancia!
 
 <img src="images/MCO-step2.png" width="50%">
 
-13. MCO usa la distancia de todos los días: la perpendicular de Y a la recta da la estimacion: proyección ortogonal de Y sobre la recta. El segmento perpendicular es el vector de errores e=(2-2.4, 5-4,8)=(-0,4, 0,2). Y el beta es lógicamente 2,4 ya que 2,4 * (1, 2) = (2,4, 4,8)
+13. Recapitulando, MCO usa la distancia de todos los días: nuestra estimación se obtiene trazando la perpendicular de Y a la recta (la proyección ortogonal de Y). En este caso ese punto es (2,4, 4,8). Y la perpendicular es el vector de errores e=(2-2.4, 5-4,8)=(-0,4, 0,2). El beta es lógicamente 2,4 ya que 2,4 * (1, 2) = (2,4, 4,8)
 
 <img src="images/MCO-step3.png" width="50%">
 
