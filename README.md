@@ -1,10 +1,20 @@
 # Un par de aspectos sobre la geometría de los mínimos cuadrados
 
-1. Siempre me extrañó que la primera opción para los modelos de regresión fuese minimizar errores cuadráticos y no absolutos. Sin embargo hay muchos motivos, algunos muy sofisticados. El que más me gusta es geométrico: la forma en que medimos largos, distancias y ángulos
+1. Siempre me intrigó que la primera opción para los modelos de regresión fuese minimizar los errores cuadráticos y no los absolutos. Qué hay detrás de cada opción? Por qué
+la preferencia? No es más lógico usar los absolutos?
 
 $Y = X\beta + \epsilon$ con $\beta=(X^tX)^{-1}X^tY$
 
-2. El método de mínimos cuadrados ordinarios (MCO) minimiza los errores cuadráticos. En cambio el método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. La diferencia entre ambos puede interpretarse en términos de la geometría que suponen
+2. Aunque que ambas alternativas son válidas, hay muchos motivos 
+que favorecen a la primera opción, excepto en condiciones específicas.
+Pero en este post quisiera hacer foco en algo que siempre me fascinó: 
+la intuición geométrica detrás de estas alternativas metodológicas.
+
+3. Veremos que desde la geometría (la forma en que medimos largos, distancias y ángulos), 
+la alternativa de minimizar errores cuadráticos, que a priori parece más rebuscada, 
+resulta mucho más natural e intuitiva que minimizar los errores absolutos.
+
+2. Recapitulemos: el método de mínimos cuadrados ordinarios (MCO) minimiza los errores cuadráticos. En cambio el método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. La diferencia entre ambos puede interpretarse en términos de la geometría que suponen
 
 MCO: minimiza la suma de errores cuadráticos
 
@@ -86,16 +96,13 @@ abordarse con distintas geometrías subyacentes.
 
 <img src="images/MCO-step4.png" width="50%">
 
-19. Comparado, el MAD usa la distancia Mahattan y por lo tanto el y estimado, el punto más cercano de la recta al punto y, es distinto. También el beta es distinto. Pero el error ya no es ortogonal (ni siquiera podemos definir el concepto, por motivos que escapan a este post). 
+19. El MAD usa la distancia Mahattan y por lo tanto el y estimado, el punto más cercano de la recta al punto y, es distinto (2,5, 5). También el beta es distinto. Pero el error ya no es ortogonal (ni siquiera podemos definir el concepto, por motivos que escapan a este post). 
 
 <img src="images/MCO-step5.png" width="50%">
 
-20. Este ejemplo se puede generalizar en muchos niveles. Con más observaciones y regresores
-ya no se puede representar visualmente pero la interpretación geomética sigue siendo válida.
-Por eso en el MCO aparece la matriz de proyección:
+20. Este ejemplo se puede generalizar en muchos aspectos, pero con más observaciones y regresores no se puede representar visualmente (implica espacios de más dimensiones). Sin embargo la interpretación geomética es idéntica. Por eso en el MCO aparece la "matriz de proyección"
 
 
-
-21. Podemos incluso generalizar espacios vectores (de datos) a variables aleatorias 
-(funciones) y en lugar de distancia euclidiana vs. manhattan tendremos 
+21. Podemos incluso generalizar de espacios de vectores en Rn (n datos) a variables aleatorias 
+(funciones). En lugar de distancia euclidiana vs. manhattan tendremos 
 espacios de Hilbert (e.g. norma L2) vs. espacios de Banach (e.g. norma L1)
