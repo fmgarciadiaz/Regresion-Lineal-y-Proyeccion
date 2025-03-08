@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.8)  8 MAR 2025 00:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.8)  8 MAR 2025 00:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,17 +436,17 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11774 strings out of 473522
- 250341 string characters out of 5713642
- 607904 words of memory out of 5000000
- 34839 multiletter control sequences out of 15000+600000
+ 11804 strings out of 473522
+ 250749 string characters out of 5713642
+ 608904 words of memory out of 5000000
+ 34869 multiletter control sequences out of 15000+600000
  558837 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,6n,107p,392b,555s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/fgarcia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmmi10.pfb><C:/Users/fgarcia/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /amsfonts/cm/cmr10.pfb>
-Output written on Manhattan.pdf (1 page, 22877 bytes).
+Output written on Manhattan.pdf (1 page, 22893 bytes).
 PDF statistics:
  19 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
