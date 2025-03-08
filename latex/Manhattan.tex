@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+% Dibuja la recta de 45 grados
+\draw[thick] (-3, -3) -- (3, 3) node[right] {Recta $y = x$};
+
+% Dibuja el punto A fuera de la recta
+\coordinate (A) at (1, 2);
+\filldraw[blue] (A) circle (2pt) node[above right] {$A(1,2)$};
+
+% Dibuja el rombo (distancia Manhattan) alrededor del punto A
+\coordinate (P1) at (3, 1); % Punto de contacto 1
+\coordinate (P2) at (2, 3); % Punto de contacto 2
+\coordinate (P3) at (0, 3); % Punto de contacto 3
+\coordinate (P4) at (1, 1); % Punto de contacto 4
+
+% Dibuja las líneas que forman el rombo
+\draw[dashed] (A) -- (P1);
+\draw[dashed] (A) -- (P2);
+\draw[dashed] (A) -- (P3);
+\draw[dashed] (A) -- (P4);
+
+% Dibuja los puntos de contacto
+\filldraw[red] (P1) circle (2pt);
+\filldraw[red] (P2) circle (2pt);
+\filldraw[red] (P3) circle (2pt);
+\filldraw[red] (P4) circle (2pt);
+
+\end{tikzpicture}
+
+\end{document}
