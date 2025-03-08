@@ -20,11 +20,14 @@ MCO: minimiza la suma de errores cuadráticos
 
 $y = \hat{y} + \hat{e} = x\beta + \hat{e}$ con un $\beta$ que minimiza  
 
+
 $\lvert\lvert\hat{e}\rvert\rvert_{mco}=\sum_{i=1}^{n}\hat{e_i}^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2=\sum_{i=1}^{n}(y_i-x_i\beta)^2$
+
 
 MDA: minimiza la suma de desviaciones absolutas
 
  $\lvert\lvert\hat{e}\rvert\rvert_{mad}=\sum_{i=1}^{n}\lvert\hat{e_i}\rvert=\sum_{i=1}^{n}\lvert y_i-\hat{y}_i\rvert$
+
 
 3. La geometría que subyace en el MCO es la euclidiana: el mundo con el que estamos familiarizados. En él hay  correspondencias muy útiles entre conceptos matemáticos e ideas estadísticas. La geometría que supone el MAD es mucho más "fea" y sacrifica esas correspondencias. 
 
