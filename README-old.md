@@ -1,6 +1,7 @@
 # Un par de aspectos sobre la geometría de los mínimos cuadrados
 
-1. Siempre me intrigó que la primera opción para los modelos de regresión fuese minimizar los errores cuadráticos y no los absolutos. ¿Qué hay detrás de cada opción? ¿Por qué la preferencia? ¿No es más lógico usar los absolutos?
+1. Siempre me intrigó que la primera opción para los modelos de regresión fuese minimizar los errores cuadráticos y no los absolutos. Qué hay detrás de cada opción? Por qué
+la preferencia? No es más lógico usar los absolutos?
 
 $Y = X\beta + \epsilon$ con $\beta=(X^tX)^{-1}X^tY$
 
