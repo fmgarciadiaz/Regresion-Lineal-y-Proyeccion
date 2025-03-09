@@ -66,9 +66,7 @@ $\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}
 
 ![](images/angulos.png)
 
-12. Los vectores perpendiculares son lineamente todo lo distinto que pueden ser. En ese caso, su producto interior, 
-que en un espacio euclidio puede definirse como la suma del producto de dos vectores componente a componente, 
-se anula. 
+12. Los vectores perpendiculares son lineamente todo lo distintos que pueden ser. En ese caso, su producto interior, que en un espacio euclidio puede definirse como la suma del producto de dos vectores componente a componente, se anula. 
 
 13. Una "desventaja" de la distancia Manhattan es que no es compatible 
 con ninguna definición de producto interno. Tampoco podemos definirle ángulos, ni proyecciones ortogonales. 
@@ -106,6 +104,6 @@ abordarse con distintas geometrías subyacentes.
 20. Este ejemplo se puede generalizar en muchos aspectos, pero con más observaciones y regresores no se puede representar visualmente (implica espacios de más dimensiones). Sin embargo la interpretación geomética es idéntica. Por eso en el MCO aparece la "matriz de proyección"
 
 
-21. Podemos incluso generalizar de espacios de vectores en Rn (n datos) a variables aleatorias 
+21. Podemos incluso generalizar de espacios vectoriales en Rn (n datos) a variables aleatorias 
 (funciones). En lugar de distancia euclidiana vs. manhattan tendremos 
 espacios de Hilbert (e.g. norma L2) vs. espacios de Banach (e.g. norma L1)
