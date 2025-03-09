@@ -1,35 +1,51 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 \usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[margin=2cm]{geometry}
 
 \begin{document}
 
-\begin{tikzpicture}
+\begin{center}
+    \textbf{Distancia punto a recta (manhattan con múltiples soluciones)}
+\end{center}
 
-% Dibuja la recta de 45 grados
-\draw[thick] (-3, -3) -- (3, 3) node[right] {Recta $y = x$};
+\begin{center}
+\begin{tikzpicture}[scale=2.0]
+    % -----------------------------------------------------
+    % 1) Recta (sin etiqueta)
+    % -----------------------------------------------------
+    \draw[thick] (-2,-2) -- (2,2);
 
-% Dibuja el punto A fuera de la recta
-\coordinate (A) at (1, 2);
-\filldraw[blue] (A) circle (2pt) node[above right] {$A(1,2)$};
+    % -----------------------------------------------------
+    % 2) Punto Y en (0,1)
+    % -----------------------------------------------------
+    \filldraw (0,1) circle (0.8pt) node[above] {$Y$};
 
-% Dibuja el rombo (distancia Manhattan) alrededor del punto A
-\coordinate (P1) at (3, 1); % Punto de contacto 1
-\coordinate (P2) at (2, 3); % Punto de contacto 2
-\coordinate (P3) at (0, 3); % Punto de contacto 3
-\coordinate (P4) at (1, 1); % Punto de contacto 4
+    % -----------------------------------------------------
+    % 3) Distancia Euclidiana: Círculo con centro en Y
+    %    Proyección ortogonal en la recta: P_E = (0.5,0.5)
+    % -----------------------------------------------------
+    \draw[blue, thick] (0,1) circle ({1/sqrt(2)});
+    \filldraw[red] (0.5,0.5) circle (0.8pt) node[below right] {$P_E$};
+    \draw[dashed] (0,1) -- (0.5,0.5);
 
-% Dibuja las líneas que forman el rombo
-\draw[dashed] (A) -- (P1);
-\draw[dashed] (A) -- (P2);
-\draw[dashed] (A) -- (P3);
-\draw[dashed] (A) -- (P4);
+    % -----------------------------------------------------
+    % 4) Distancia Manhattan: Rombo (L1)
+    %    Vértices del rombo: (0,2), (1,1), (0,0), (-1,1)
+    % -----------------------------------------------------
+    \draw[green, thick] (0,2) -- (1,1) -- (0,0) -- (-1,1) -- cycle;
 
-% Dibuja los puntos de contacto
-\filldraw[red] (P1) circle (2pt);
-\filldraw[red] (P2) circle (2pt);
-\filldraw[red] (P3) circle (2pt);
-\filldraw[red] (P4) circle (2pt);
+    % -----------------------------------------------------
+    % 5) Dos puntos equidistantes sobre la recta tocando el rombo
+    % -----------------------------------------------------
+    \filldraw[red] (1,1) circle (0.8pt) node[below right] {$P_M?$};
+    \filldraw[red] (0,0) circle (0.8pt) node[below right] {$P_M?$};
+
+    % Flechas desde Y a los puntos sobre la recta
+    \draw[->, dashed] (0,1) -- (1,1);
+    \draw[->, dashed] (0,1) -- (0,0);
 
 \end{tikzpicture}
+\end{center}
 
 \end{document}
