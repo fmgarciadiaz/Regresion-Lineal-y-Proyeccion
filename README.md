@@ -4,38 +4,167 @@
 
 $Y = X\beta + \epsilon$ con $\beta=(X^tX)^{-1}X^tY$
 
-2. Aunque ambas alternativas son válidas, hay motivos que favorecen a la primera opción, excepto en condiciones específicas. En este post quiero hacer foco en algo que siempre me fascinó: la intuición geométrica detrás de estas alternativas metodológicas.
+2. Aunque ambas alternativas son válidas, hay muchos motivos para preferir la primera, salvo en condiciones específicas. Algunos son realmente sofisticados, pero en este post voy a hacer foco en algo que siempre me pareció atrapante: 
+la intuición geométrica detrás de esta elección
 
-3. Es que en realidad, al definir qué minimizamos estamos adoptando una métrica, 
-una forma de medir distancias entre vectores. Y esa métrica se asocia también
-al modo en que medimos largos y ángulos (produto interior y norma). 
+3. Sucede que definir la función por minimizar es más que algo simplemente operativo.
+En realidad, estamos adoptando una métrica, una forma de medir distancias entre vectores. 
+Y esa métrica se vincula también al modo en que medimos largos y ángulos (produto interior y norma). 
 
-- dicho de otra forma estamos adoptando una estructura para el espacio
-en el que viven nuestros datos. Y como veremos, la estructura del espacio
-que subyace a la elección de los errores cuadráticos es bastante más
-útil que la de los absolutos.
+4. Es decir, estamos adoptando una estructura para abstraer el espacio
+en el que viven nuestros datos y modelos. Como veremos, la estructura del espacio
+que subyace al minimizar errores cuadráticos es más "adecuada" que la de los absolutos.
 
-veremos que MCO es euclidiano y MAD no.
+5. Adelantando el final: elegir mínimos cuadrados ordinarios (MCO) es 
+usar la geometría de los espacios euclidianos, mientras que el 
+método de Mínimas Desviaciones Absolutas (MAD) se asocia a una geometría mucho
+más "rara" 
 
-repasar diferencias entre distancias
+6. Un espacio euclidiano es un espacio vectorial dotado de un producto interno, del cual se deriva una norma (como medimos largo de vectores) y de aquella una métrica (como medimos distancias). Estos elementos permiten también definir la noción de ángulo.
 
-punto recta: euclides única e intuitiva manhattan no
+Producto interior de A con B
 
-ángulo: da una medida de similitud lineal.
-proyeccion ortogonal. depende de como medimos largos y
-del producto interior.
+$\mathbf{A} \cdot \mathbf{B} = \|\mathbf{A}\|\|\mathbf{B}\|\cos(\theta)$
 
-manhattan no tiene producto interior, no hay angulos ni
-proyeccion ortogonal
+es decir
 
-MCO es euclidiano: ejemplo
+$\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$
 
-MAD no: ejemplo
+7. En los espacios euclidianos la norma (el largo) es una la generalización del 
+teorema de Pitágoras. Y la distancia entre dos vectores se define como la norma de su diferencia. 
 
-generalizacion
+$d_{ab}=\lvert \lvert{a-b}\lvert \lvert $
 
-correlacion es el angulo (producto interior sobre normas)
-esperanza condicional es la proyeccion etc
+
+8. Los puntos equidistantes a otro forman círculos concéntricos y su distancia es
+la raíz de la suma de los cuadrados de la diferencia de sus componentes (de nuevo: Pitágoras!)
+Esta medida de distancia es la que usamos de manera intuitiva cotidianamente.
+
+<img src="images/Distancia-euclides.png" width="50%">
+<img src="images/Euclidiana.png" width="50%">
+
+9. La distancia manhattan (veremos es la asociada al MAD) es la suma de la diferencia absoluta de los componentes. Los puntos equidistantes forman rombos (rarísimo!), lo que implica resultados diferentes. Un ejemplo importante a nuestros fines: la distancia de un punto a una recta
+
+<img src="images/Manhattan.png" width="50%">
+
+
+10. La distancia entre un punto y una recta es la mínima entre el punto 
+y cada punto de la recta. Y ¡atención! esto involucra minimizar una distancia. 
+En un caso minimizamos la raíz de la suma cuadrática de las diferencias; en el otro las
+absolutas. 
+
+<img src="images/Comaparacion2.png" width="50%">
+
+11. Vale mencionar que minimizar la raíz cuadrada de una función positiva (como en este caso) es igual a minimizar la directamente la función (la raíz es monótona creciente en dicho caso). El problema euclidiano es el mismo si minimizamos directamente las diferencias cuadráticas
+
+FORMULA DE MINIMOS
+
+11. Con la distancia euclidiana el punto más cercano​ está sobre 
+el círculo más pequeño, mientras que con la Manhattan, está sobre el rombo más chico. 
+Es decir, cambian tanto el punto más cercano como la distancia. Claramente, 
+la euclidiana luce más "natural" 
+
+<img src="images/Comaparacion2.png" width="50%">
+
+12. Y luce más natural porque el segmento entre Y y Pe es *perpendicular* a la recta: Pe es la "proyección ortogonal".
+La perpendicularidad requiere de la idea de "ángulo", que se define a partir de las estructuras
+que mencionamos: producto interior y norma;
+
+Producto interior de A con B
+
+$\mathbf{A} \cdot \mathbf{B} = \|\mathbf{A}\|\|\mathbf{B}\|\cos(\theta)$
+
+es decir
+
+$\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$
+
+13. Lo interesante del concepto de ángulo es que permite medir cuán "paralelos" son dos vectores. 
+Cuando el ángulo es cero un vector puede escribise exactamente como múltiplo del otro. 
+Cuando el ángulo crece los vectores son cada vez menos proporcionales.
+
+![](images/angulos.png)
+
+14. Los vectores perpendiculares son lineamente todo lo distintos que pueden ser: en este caso se anula el producto interior (que en un espacio euclidio se define como la suma del producto de dos vectores componente a componente). 
+
+
+15. Una gran desventaja de la distancia Manhattan es que no es posible insertarla en una estructura geométrica semejante.
+No hay producto interior compatible, por lo que no podemos definir
+ángulos ni proyecciones ortogonales. Además los puntos de mínima distancia pueden no ser únicos
+
+
+<img src="images/Manhattan2.png" width="50%">
+
+14. ¿Qué tiene que ver todo esto con la regresión lineal? ¡Todo! Recapitulemos. El  (MCO) minimiza los errores cuadráticos. El método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. El primero es compatible con el mundo euclidiano, el segundo
+es algo muy diferente
+
+MCO: minimiza la suma de errores cuadráticos
+
+$y = \hat{y} + \hat{e} = x\beta + \hat{e}$ con un $\beta$ que minimiza  
+
+
+$\lvert\lvert\hat{e}\rvert\rvert_{mco}=\sum_{i=1}^{n}\hat{e_i}^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2=\sum_{i=1}^{n}(y_i-x_i\beta)^2$
+
+
+MDA: minimiza la suma de desviaciones absolutas
+
+ $\lvert\lvert\hat{e}\rvert\rvert_{mad}=\sum_{i=1}^{n}\lvert\hat{e_i}\rvert=\sum_{i=1}^{n}\lvert y_i-\hat{y}_i\rvert$
+
+
+15. Para visualizar esto fácilmente consideremos una regresión con una sola variable y y un regresor x, sin intercepto. Tomemos dos observaciones: para x=1 se observó y=2 y para x=2, y=5
+
+$y=\beta x + e$ 
+
+$y=(y_1, y_2)=(2,5)$ 
+
+$x=(x_1, x_2)=(1,2)$
+
+
+16. Lo bueno de este ejemplo de juguete es que podemos representarlo en 2D igual que antes: en las abcisas pondremos la primera observación y en las ordenadas la segunda. Entonces y es el vector (2,5), y beta * x genera una recta desde el origen que pasa por x=(1,2).
+
+<img src="images/MCO-step1.png" width="50%">
+
+16. La recta es el espacio que representa los puntos "barridos" por el vector x con cada valor de beta. Si lo miramos fijo descubrimos que estimar es minimizar la distancia entre esa recta e y: el problema geométrico que mostramos antes! Su solución varía con la
+geometría subyacente
+
+<img src="images/MCO-step2.png" width="50%">
+
+
+LINK A MINIMIZAR LA DISTANCIA EUCLIDIANA POR TEMA RAIZ
+
+17. El MCO usa la distancia euclidiana: estimar es trazar la perpendicular de Y a la recta (proyección ortogonal). En este ejemplo eso da (2,4, 4,8). El vector de errores es 
+e=(2-2.4, 5-4,8)=(-0,4, 0,2). El beta es 2,4 ya que 2,4 * (1, 2) = (2,4, 4,8)
+
+<img src="images/MCO-step3.png" width="50%">
+
+18. En esta línea, el vector de errores es perpendicular a la recta, por lo que el producto interior se anula (-0,4 * 2.4)  + (0,2 * 4,8) = 0. 
+
+<img src="images/MCO-step4.png" width="50%">
+
+19. En cambio el MAD usa la distancia Mahattan y por lo tanto el y estimado (el punto más cercano de la recta) es diferente (2,5, 5). También el beta es distinto. Ahora el error no es ortogonal (la estimación ya no es la proyección ortogonal)
+
+<img src="images/MCO-step5.png" width="50%">
+
+20. Este ejemplo es fácilmente representable en 2D, pero con más observaciones y regresores no se puede visualizar directamente. Sin embargo, la interpretación geométrica sigue siendo la misma. Por ello las estimaciones se obtienen con la llamada "matriz de proyección".
+
+$\hat{y}=X\hat\beta = X(X^tX)^{-1}X^ty=Py$
+donde P es la matriz de proyección 
+de y en el espacio barrido por X.
+
+
+21. Podemos generalizar esto de espacios vectoriales en Rn (n datos) a 
+variables aleatorias. En dicho caso requeriremos pensar espacios de funciones. 
+Los espacios euclidianos pasan a espacios de Hilbert (con norma L2) 
+y la distancia Manhattan a espacios de Banach (con norma L1)
+
+22. Los espacios de Hilbert también tienen un producto interior y cuentan con
+norma, distancia, ángulos y proyecciones ortogonales, estructuras que se 
+utilizan para definir la varianza, covarianza y la estimación lineal de variables
+aleatorias en función de otras. 
+
+
+-----
+
+
 
 4. Recapitulemos. El método de mínimos cuadrados ordinarios (MCO) minimiza los errores cuadráticos. En cambio el método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. La diferencia entre ambos puede interpretarse en términos de la geometría que suponen
 
