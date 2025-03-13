@@ -1,55 +1,76 @@
 # Un par de aspectos sobre la geometría de los mínimos cuadrados
 
-1. Siempre me intrigó que la primera opción para los modelos de regresión fuese minimizar los errores cuadráticos y no los absolutos. ¿Qué hay detrás de cada opción? ¿Por qué la preferencia? ¿No es más lógico usar los absolutos?
+1. Siempre me intrigó que la primera opción para los modelos de regresión fuese minimizar los errores cuadráticos y no los absolutos. ¿Por qué la preferencia? ¿No es más lógico usar los errores absolutos?
 
 $Y = X\beta + \epsilon$ con $\beta=(X^tX)^{-1}X^tY$
 
-2. Aunque ambas alternativas son válidas, hay muchos motivos para preferir la primera, salvo en condiciones específicas. Algunos son realmente sofisticados, pero en este post voy a hacer foco en algo que siempre me pareció atrapante: 
-la intuición geométrica detrás de esta elección
+2. Aunque ambas alternativas son válidas hay motivos profundos para preferir la primera, salvo condiciones específicas (e.g. con valores atípicos). Algunos son muy sofisticados, pero hoy quiero hacer foco en algo que siempre me pareció súper atrapante: la intuición geométrica
 
-3. Sucede que definir la función por minimizar es más que algo simplemente operativo.
-En realidad, estamos adoptando una métrica, una forma de medir distancias entre vectores. 
-Y esa métrica se vincula también al modo en que medimos largos y ángulos (produto interior y norma). 
+3. Definir la función que minimizamos es más que algo operativo.
+En realidad, implícitamente estamos adoptando una métrica, una forma de medir distancias. Y ello se vincula también al modo en que medimos largos y ángulos (que dependen del produto interior y la norma) 
 
-4. Es decir, estamos adoptando una estructura para abstraer el espacio
-en el que viven nuestros datos y modelos. Como veremos, la estructura del espacio
-que subyace al minimizar errores cuadráticos es más "adecuada" que la de los absolutos.
+4. Es decir, estamos adoptando una estructura que abstrae el espacio
+en el que vivirán nuestros modelos. Veremos que la estructura supuesta por 
+la minimización de errores cuadráticos se adapta más armónicamente
+que la de los errores absolutos.
 
 5. Adelantando el final: elegir mínimos cuadrados ordinarios (MCO) es 
 usar la geometría de los espacios euclidianos, mientras que el 
 método de Mínimas Desviaciones Absolutas (MAD) se asocia a una geometría mucho
-más "rara" 
+más "rara" (a veces llamada "del taxista") ¿qué es cada cosa?
 
-6. Un espacio euclidiano es un espacio vectorial dotado de un producto interno, del cual se deriva una norma (como medimos largo de vectores) y de aquella una métrica (como medimos distancias). Estos elementos permiten también definir la noción de ángulo.
+6. Un espacio euclidiano es un espacio vectorial dotado de un producto interno, del cual se deriva una norma (como medimos largo de vectores) y de ésta una métrica (como medimos distancias). Estos elementos permiten también definir la noción fundamental de ángulo.
 
-Producto interior de A con B
+Espacios euclidianos de n dimensiones
+Producto interior
 
-$\mathbf{A} \cdot \mathbf{B} = \|\mathbf{A}\|\|\mathbf{B}\|\cos(\theta)$
+$\langle x,y \rangle=\sum_1^{n}{x_iy_i}$
 
-es decir
+Norma inducida por el producto interior
 
-$\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$
+$\|x\| = \langle x,x \rangle^{1/2}=(\sum_1^{n}{x_i^2})^{1/2}$
 
-7. En los espacios euclidianos la norma (el largo) es una la generalización del 
-teorema de Pitágoras. Y la distancia entre dos vectores se define como la norma de su diferencia. 
+Ángulo
 
-$d_{ab}=\lvert \lvert{a-b}\lvert \lvert $
+$\cos(\theta_{xy}) = \frac{\langle x,y \rangle}{\|\mathbf{x}\|\|\mathbf{y}\|}$
+
+7. Los euclidianos son espacios donde se cumple el teorema de Pitágoras.
+La distancia entre dos vectores se define como la norma de su diferencia. Esto
+es una forma difícil de decir que es la distancia usual que usamos todos los días! 
+
+$d_{eu}=\lvert \lvert{x-y}\lvert \lvert= 
+\langle x-y,x-y \rangle^{1/2}=(\sum_1^{n}{(x_i-y_i)^2})^{1/2}$
 
 
 8. Los puntos equidistantes a otro forman círculos concéntricos y su distancia es
-la raíz de la suma de los cuadrados de la diferencia de sus componentes (de nuevo: Pitágoras!)
-Esta medida de distancia es la que usamos de manera intuitiva cotidianamente.
+la raíz de la suma cuadrática de la diferencia de sus componentes (de nuevo: Pitágoras!) 
 
 <img src="images/Distancia-euclides.png" width="50%">
 <img src="images/Euclidiana.png" width="50%">
 
-9. La distancia manhattan (veremos es la asociada al MAD) es la suma de la diferencia absoluta de los componentes. Los puntos equidistantes forman rombos (rarísimo!), lo que implica resultados diferentes. Un ejemplo importante a nuestros fines: la distancia de un punto a una recta
+9. La distancia manhattan (que es la asociada al MAD) es la suma de la diferencia absoluta de los componentes. En este caso los puntos equidistantes forman rombos (rarísimo!). Eso cambia sustancialmente la geometría del espacio.
+
+$d_{man}=\lvert \lvert{x-y}\lvert \lvert= 
+\sum_1^{n}{|x_i-y_i|}$
+
 
 <img src="images/Manhattan.png" width="50%">
 
 
-10. La distancia entre un punto y una recta es la mínima entre el punto 
-y cada punto de la recta. Y ¡atención! esto involucra minimizar una distancia. 
+10. Comparemos que pasa si queremos saber la distancia entre un punto y una recta en 
+cada geometría. Debemos calcular la distancia desde el punto a cada punto sobre la recta y elegir la menor. 
+
+$d_{eu}=\lvert \lvert{x-y}\lvert \lvert= 
+\langle x-y,x-y \rangle^{1/2}=(\sum_1^{n}{(x_i-y_i)^2})^{1/2}$
+
+
+$d_{man}=\lvert \lvert{x-y}\lvert \lvert= 
+\sum_1^{n}{|x_i-y_i|}$
+
+
+
+
+ esto involucra minimizar una distancia. 
 En un caso minimizamos la raíz de la suma cuadrática de las diferencias; en el otro las
 absolutas. 
 
