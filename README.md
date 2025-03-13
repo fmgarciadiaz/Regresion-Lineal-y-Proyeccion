@@ -73,14 +73,15 @@ $argmin \space \beta \space \lvert \lvert{x\beta-y}\lvert \lvert=
 \sum_1^{n}{|x_i\beta-y_i|}$
 
 
-En un caso minimizamos la raíz de la suma cuadrática de las diferencias; en el otro las
-absolutas. 
+11. Vale mencionar que minimizar la raíz cuadrada de una función positiva (como en este caso) es igual a minimizar la directamente la función (la raíz es monótona creciente en dicho caso). El problema euclidiano es el mismo si minimizamos directamente las diferencias cuadráticas
+
+VEREMOS QUE NO ES CASUALIDAD QUE DE LO MISMO QUE MCO
+FORMULA DE MINIMOS
+
+12. bx da PE con euclidaino y Pm con Manhattan.
 
 <img src="images/Comaparacion2.png" width="50%">
 
-11. Vale mencionar que minimizar la raíz cuadrada de una función positiva (como en este caso) es igual a minimizar la directamente la función (la raíz es monótona creciente en dicho caso). El problema euclidiano es el mismo si minimizamos directamente las diferencias cuadráticas
-
-FORMULA DE MINIMOS
 
 11. Con la distancia euclidiana el punto más cercano​ está sobre 
 el círculo más pequeño, mientras que con la Manhattan, está sobre el rombo más chico. 
