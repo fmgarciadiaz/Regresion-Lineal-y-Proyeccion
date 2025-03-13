@@ -57,20 +57,22 @@ $d_{man}=\lvert \lvert{x-y}\lvert \lvert=
 <img src="images/Manhattan.png" width="50%">
 
 
-10. Comparemos que pasa si queremos saber la distancia entre un punto y una recta en 
-cada geometría. Debemos calcular la distancia desde el punto a cada punto sobre la recta y elegir la menor. 
 
-$d_{eu}=\lvert \lvert{x-y}\lvert \lvert= 
-\langle x-y,x-y \rangle^{1/2}=(\sum_1^{n}{(x_i-y_i)^2})^{1/2}$
+10. Comparemos que pasa si queremos saber la distancia entre un punto Y y una recta en cada geometría. Debemos encontrar el punto sobre
+la recta con menor distancia a Y. Es decir, hay que elegir un
+beta que minimice la distancia que corresponde en cada caso
+
+Caso euclidiano
+
+$argmin \space \beta \space \lvert \lvert{x\beta-y}\lvert \lvert=
+(\sum_1^{n}{(x_i\beta-y_i)^2})^{1/2}$
+
+Caso manhattan
+
+$argmin \space \beta \space \lvert \lvert{x\beta-y}\lvert \lvert= 
+\sum_1^{n}{|x_i\beta-y_i|}$
 
 
-$d_{man}=\lvert \lvert{x-y}\lvert \lvert= 
-\sum_1^{n}{|x_i-y_i|}$
-
-
-
-
- esto involucra minimizar una distancia. 
 En un caso minimizamos la raíz de la suma cuadrática de las diferencias; en el otro las
 absolutas. 
 
