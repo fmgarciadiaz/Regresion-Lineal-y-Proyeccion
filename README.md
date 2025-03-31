@@ -1,4 +1,4 @@
-# Un par de aspectos sobre la geometría de los mínimos cuadrados
+# Notas sobre la geometría de los mínimos cuadrados
 
 1. Siempre me intrigó que la primera opción para los modelos de regresión fuese minimizar los errores cuadráticos y no los absolutos. ¿Por qué la preferencia? ¿No es más lógico usar los errores absolutos?
 
