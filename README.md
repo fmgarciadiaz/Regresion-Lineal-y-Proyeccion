@@ -6,16 +6,23 @@ $Y = X\beta + \epsilon$ con $\beta=(X^tX)^{-1}X^tY$
 
 2. Aunque ambas alternativas son válidas, hay motivos para preferir la primera, salvo en ocasiones especiales (e.g. con valores atípicos). Algunos motivos son muy sofisticados, pero aquí quiero hacer foco en algo que siempre me resultó atrapante: la intuición geométrica
 
-3. Definir la función que minimizamos es más que algo simplemente operativo.
-En realidad, estamos adoptando una estructura para el espacio donde modelizaremos
-nuestros datos e inferencias: la forma en que medimos largos, distancias y ángulos.
+3. Definir la función que minimizamos es más que algo simplemente operativo. En realidad, estamos adoptando una estructura para el espacio donde modelizaremos nuestros datos e inferencias: la forma en que medimos largos, distancias y ángulos.
+
+
+<img src="images/abstracto.png" width="50%">
+
 
 4. Y en líneas generales, la estructura supuesta por la minimización de errores cuadráticos se adapta más "armónicamente" a esa modelización que la de los errores absolutos.
+
 
 5. Adelantando el final: elegir mínimos cuadrados ordinarios (MCO) es 
 usar la geometría de los espacios euclidianos, mientras que el 
 método de Mínimas Desviaciones Absolutas (MAD) se asocia a una geometría mucho
-más "rara" (a veces llamada "del taxista") ¿qué es cada cosa?
+más "rara" (la "del taxista") ¿qué es cada cosa?
+
+
+<img src="images/taxista.png" width="50%">
+
 
 6. Un espacio euclidiano es un espacio vectorial dotado de un producto interno, del cual se deriva una norma (como medimos largo de vectores) y de ésta una métrica (como medimos distancias). Estos elementos permiten también definir la noción fundamental de ángulo.
 
@@ -179,8 +186,8 @@ de y en el espacio barrido por X.
 norma, distancia, ángulos y proyecciones ortogonales, 
 
 
-24. Bonus track: los espacios de Hilbert unifican campos de estudio tan diversos como la 1) probabilidad, la estadística y la econometría (la proyección ortogonal es fundamental a la hora de definir la varianza, la covarianza, la esperanza condicional, etc)
+24. Bonus track: los espacios de Hilbert unifican campos de estudio tan diversos como la i) probabilidad, la estadística y la econometría (la proyección ortogonal es fundamental a la hora de definir la varianza, la covarianza, la esperanza condicional, etc)
 
-25. 2) La física cuántica (los estados cuánticos son elementos de un espacio de Hilbert y las amplitudes de probabilidad de transicionar de un estado a otro están dadas por el producto interno entre ambos)
+25. ii) La física cuántica (los estados cuánticos son elementos de un espacio de Hilbert y las amplitudes de probabilidad de transicionar de un estado a otro están dadas por el producto interno entre ambos)
 
-26. 3) El análisis espectral (análisis de Fourier) de una onda (o de un proceso estocástico) es la proyección de una función sobre la "base" formada por las exponenciales complejas (o sobre senos y cosenos).
+26. iii) El análisis espectral (análisis de Fourier) de una onda (o de un proceso estocástico) es la proyección de una función sobre la "base" formada por las exponenciales complejas (o sobre senos y cosenos).
