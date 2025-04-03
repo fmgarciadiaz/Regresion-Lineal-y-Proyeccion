@@ -4,26 +4,26 @@
 
 $Y = X\beta + \epsilon$ con $\beta=(X^tX)^{-1}X^tY$
 
-2. Aunque ambas alternativas son perfectamente válidas, hay motivos para preferir la primera, salvo en ocasiones especiales (e.g con valores atípicos). Algunos motivos son muy sofisticados, pero aquí quiero hacer foco en algo que siempre me resultó atrapante: la intuición geométrica
+2. Aunque ambas alternativas son válidas, hay motivos (algunos muy sofisticados) para preferir la primera, salvo en ocasiones (ej con valores atípicos). Pero aquí quiero hacer foco en algo que siempre me resultó atrapante: la comparación de la intuición geométrica detrás de cada uno
 
-3. Definir la función que minimizamos es más que algo simplemente operativo: en realidad, estamos adoptando una estructura para el espacio con el que modelizaremos nuestros datos e inferencias: la forma en que medimos largos, distancias y ángulos.
+3. Elegir la función que minimizamos es más que algo simplemente operativo: en realidad, estamos adoptando una estructura para el espacio con el que modelizaremos nuestras inferencias: la forma en que medimos largos, distancias y ángulos.
 
 
 <img src="images/abstracto.png" width="50%">
 
 
-4. Y en líneas generales, la estructura supuesta por la minimización de los errores cuadráticos se adapta más "armónicamente" a esa modelización que la de los errores absolutos.
+4. En líneas generales, la estructura supuesta por la minimización de los errores cuadráticos se adapta a la modelización estadística de manera más "armónica" que la de los errores absolutos.
 
 
-5. Adelantando el final: elegir mínimos cuadrados ordinarios (MCO) es 
+5. Adelantemos el final: elegir mínimos cuadrados ordinarios (MCO) es 
 usar la geometría de los espacios euclidianos, mientras que el 
-método de Mínimas Desviaciones Absolutas (MAD) se asocia a una geometría mucho más "rara" (la "del taxista") ¿Qué es cada cosa? ->
+método de Mínimas Desviaciones Absolutas (MAD) se asocia a una geometría mucho más "rara" (la "del taxista") ¿Qué es cada cosa?
 
 
 <img src="images/taxista.png" width="50%">
 
 
-6. Un espacio euclidiano es un espacio vectorial dotado de un producto interno, del cual se deriva una norma (como medimos el largo de los vectores) y de ésta una métrica (como medimos las distancias). Estos elementos permiten también definir la noción fundamental de ángulo.
+6. Un espacio euclidiano es un espacio vectorial dotado de un producto interno, del cual se deriva una norma (como medimos el largo de los vectores) y de ésta última una métrica (como medimos distancias). Estos elementos permiten también definir la noción fundamental de ángulo
 
 **Espacios euclidianos de *n* dimensiones**
 
@@ -41,18 +41,18 @@ $\cos(\theta_{xy}) = \frac{\langle x,y \rangle}{\|\mathbf{x}\|\|\mathbf{y}\|}$
 
 7. En los espacios euclidianos se cumple el teorema de Pitágoras.
 La distancia entre dos vectores se define como la norma de su diferencia. Esto
-no es sino una forma difícil de decir que es la distancia que usamos todos los días! 
+no es sino una forma difícil de decir que es **la distancia que usamos todos los días** 
 
 $d_{eu}=\lvert \lvert{x-y}\lvert \lvert= 
 \langle x-y,x-y \rangle^{1/2}=(\sum_1^{n}{(x_i-y_i)^2})^{1/2}$
 
 
-8. Con esta métrica puntos equidistantes a otro forman círculos concéntricos y su distancia es la raíz de la suma cuadrática de la diferencia de sus componentes (Pitágoras!) 
+8. Con esta métrica puntos equidistantes a otro forman círculos concéntricos y su distancia se calcula como la suma cuadrática de la diferencia de sus componentes (Pitágoras!) 
 
 <img src="images/Distancia-euclides.png" width="50%">
 <img src="images/Euclidiana.png" width="50%">
 
-9. En cambio la distancia manhattan (como veremos, asociada al MAD) es la suma de la diferencia absoluta de los componentes. En este caso los puntos equidistantes forman rombos (horrible!). Eso cambia sustancialmente la geometría del espacio.
+9. En cambio la distancia manhattan (asociada, como adelantamos, al MAD) es la suma de la diferencia absoluta de los componentes. En este caso los puntos equidistantes forman rombos (rarísimo!). Y eso cambia radicalmente la geometría del espacio.
 
 $d_{man}=\lvert \lvert{x-y}\lvert \lvert= 
 \sum_1^{n}{|x_i-y_i|}$
@@ -61,7 +61,7 @@ $d_{man}=\lvert \lvert{x-y}\lvert \lvert=
 <img src="images/Manhattan.png" width="50%">
 
 
-10. Dando un paso más, comparemos ahora la distancia entre un punto (Y) y una recta en cada geometría. Debemos encontrar el punto sobre la recta con menor distancia a Y. Es decir, tenemos que buscar un beta que minimice la distancia en cada caso (ver imagen)
+10. Dando un paso más, comparemos ahora la distancia entre un punto (Y) y una recta en cada geometría. A tal fin debemos encontrar el punto sobre la recta con menor distancia a Y. O de manera equivalente, buscar para cada geometría un beta que minimice la distancia (ver imagen)
 
 Caso **euclidiano**
 
@@ -86,15 +86,14 @@ $argmin \space \beta: \space \lvert \lvert{x\beta-y}\lvert \lvert=
 
 
 
-12. Los resultados de esta minimización difieren con cada métrica (tanto en la distancia como en el punto de mínima distnacia). Con la euclidiana el punto más cercano (Pe) está sobre el círculo tangente, mientras que con manhattan (Pm), está sobre el rombo tangente 
+12. Como vemos, los resultados de esta minimización difieren con cada métrica (tanto en el punto encontrado como en su ditancia). Con la euclidiana el punto más cercano (Pe) está sobre el círculo tangente, mientras que con manhattan (Pm), está sobre el rombo tangente 
 
 <img src="images/Comaparacion2.png" width="50%">
 
 
-12. El punto Pe luce más "natural" porque como dijimos, minimiza la distancia
-euclidiana que es la que "usamos" todos los días. En este caso el segmento entre Y y Pe es *perpendicular* a la recta.
+12. En favor del caso euclidiano, el punto Pe luce más "natural" porque como dijimos, se trata de la distancia que usamos todos los días. Notablemente, en este caso el segmento entre Y y Pe es *perpendicular* a la recta
 
-13. En este caso Pe es la llamada "proyección ortogonal" del punto Y sobre la recta. La perpendicularidad requiere de la idea de "ángulo", que se define a partir de las estructuras que mencionamos: producto interior y norma
+13. Pe es la "proyección ortogonal" del vector Y sobre la recta. La perpendicularidad demanda una idea de "ángulo", que se define a partir de las estructuras que mencionamos: producto interior y norma
 
 Producto interior de A con B
 
@@ -104,20 +103,24 @@ es decir
 
 $\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$
 
-14. Lo interesante del concepto de ángulo es que permite medir cuán "paralelos" son dos vectores. Cuando el ángulo es cero un vector puede escribise exactamente como múltiplo del otro. Cuando el ángulo crece los vectores son cada vez "menos proporcionales". 
+14. Lo interesante del concepto de ángulo es que permite medir cuán "paralelos" son dos vectores. Cuando el ángulo es cero un vector se puede escribir como múltiplo exacto del otro. Cuando el ángulo crece los vectores son cada vez "menos proporcionales". 
 
 ![](images/angulos.png)
 
-15. La idea de correlación lineal depende crucialmente de la de ángulo. Los vectores perpendiculares son (lineamente) todo lo diferentes que pueden ser: aquí se anula el producto interior (en un espacio euclidio se define como la suma del producto componente a componente) 
+15. La idea de correlación lineal depende crucialmente de la de ángulo. Los vectores perpendiculares son (lineamente) todo lo diferentes que pueden ser. De la definición se ve claro que si es así  el producto interior se anula
+
+$\cos(\pi/2) = 0 =  \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|} \implies \mathbf{A}\cdot\mathbf{B}\ = 0$ (con $\|\mathbf{A}\| \space y \space \|\mathbf{B}\| > 0 $)
+
+16. Y aquí un punto crucial cuya demostración escapa a este hilo: una gran desventaja de la distancia manhattan es que no es posible insertarla en una estructura geométrica semejante. No hay producto interior compatible
 
 
-16. Una gran desventaja de la distancia manhattan es que no es posible insertarla en una estructura geométrica semejante. No hay producto interior compatible, por lo que no tenemos ángulos ni proyecciones ortogonales. Peor aún, los puntos de mínima distancia pueden no ser únicos!
+17. Por lo que no tenemos ángulos ni proyecciones ortogonales, fundamentales a la hora de definir el concepto de correlación. Peor aún, en espacios con esta métrica los puntos de mínima distancia pueden no ser únicos, por ejemplo: 
 
 
 <img src="images/Manhattan2.png" width="50%">
 
 
-14. ¿Qué tiene que ver todo esto con la regresión lineal? ¡Todo! Recapitulemos. El  (MCO) minimiza los errores cuadráticos. El método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. El primero es compatible con el mundo euclidiano, el segundo es algo muy diferente
+14. ¿Qué tiene que ver todo esto con la regresión lineal? Un montón! Recapitulemos. El  (MCO) minimiza los errores cuadráticos. El método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. 
 
 **MCO:** minimiza la suma de *errores cuadráticos*
 
@@ -132,9 +135,9 @@ $\lvert\lvert\hat{e}\rvert\rvert_{mco}=\sum_{i=1}^{n}\hat{e_i}^2=\sum_{i=1}^{n}(
  $\lvert\lvert\hat{e}\rvert\rvert_{mad}=\sum_{i=1}^{n}\lvert\hat{e_i}\rvert=\sum_{i=1}^{n}\lvert y_i-\hat{y}_i\rvert=\sum_{i=1}^{n}\lvert \hat{y}_i-y_i\rvert$
 
 
-15. La similitud formal de estas minimizaciones con la distancia de un punto a una recta (que vimos antes) no es casual. ¡Es que se trata esencialmente de lo mismo!
+15. La similitud formal de estas minimizaciones con la distancia de un punto a una recta con, respectivamente, la métrica euclidiana y manhattan, no es casual. ¡Es que se trata esencialmente del mismo problema!
 
-16. Para visualizar este hecho consideremos la regresión de una variable (y) con un regresor (x), sin intercepto. Para el ejemplo tomemos dos observaciones: para x=1 se observó y=2 y para x=2, y=5
+16. Para visualizar geométricamente este hecho consideremos la regresión de una variable (y) con un regresor (x), sin intercepto. Para el ejemplo tomemos dos observaciones: para x=1 se observó y=2 y para x=2, y=5
 
 $y=\beta x + e$ 
 
@@ -152,20 +155,27 @@ $x=(x_1, x_2)=(1,2)$
 <img src="images/MCO-step2.png" width="50%">
 
 
-17. Como dijimos, MCO usa la distancia euclidiana: hay que trazar una perpendicular a la recta que pasa por Y (proyección ortogonal). En este ejemplo eso da Ymc = (2,4, 4,8). El vector de errores es 
+17. En el caso del MCO usemos la distancia euclidiana: hay que trazar una perpendicular a la recta que pasa por Y (proyección ortogonal). En este ejemplo eso da Ymc = (2,4, 4,8). El vector de errores es 
 e=(2-2.4, 5-4,8)=(-0,4, 0,2). El beta es 2,4 ya que 2,4 * (1, 2) = (2,4, 4,8)
 
 <img src="images/MCO-step3.png" width="50%">
 
-18. El vector de errores es perpendicular a la recta y, efectivamente,pel producto interior se anula (-0,4 * 2.4)  + (0,2 * 4,8) = 0. 
+18. No casualmente el vector de errores es perpendicular a la recta (el producto interior, calculado como la suma de los productos componente a componente, se anula (-0,4 * 2.4)  + (0,2 * 4,8) = 0.)
 
 <img src="images/MCO-step4.png" width="50%">
 
-19. En cambio el MAD usa la distancia mahattan; la estimación (y el beta) es diferente Yad = (2,5, 5).  El error ya no es ortogonal (no hay proyección ortogonal). Como no hay idea de ángulo, no existe medida de correlación lineal (hay que utilizar otros instrumentos, más complicados) 
+19. En cambio el MAD usa la distancia mahattan; la estimación (y el beta) es diferente Yad = (2,5, 5).  ¡El error ya no es ortogonal! (estrictmaente en este caso ni siquiera podemos definir la 
+ortogonalidad y hay que usar instrumentos mucho más complicados) 
 
 <img src="images/MCO-step5.png" width="50%">
 
-20. En suma, la geometría del MCO se presta mejor que la del MAD para definir conceptos fundamentales de la modelización estadística. La navaja de Ockham favorece al MCO, excepto en ciertos casos en los que los beneficios del MAD superan sus costos.
+20. CORREGIR
+AUNQUE LO CUADRADITO PARECE MAS RARO QUE LO ABSOLUTO EN REALIDAD
+ES LA DISTANCIA QUE USAMOS TODOS LOS DIAS Y LO RARO ES LO OTRO
+Peor, perdemos la idea de angulo y se requeriran cosas mucho
+mas raras. La navaca de Ockham favorece al MCO, salvo casos
+muy puntuales.
+
 
 21. Con más observaciones y regresores se hace imposible hacer una representación visual sencilla . Sin embargo, la interpretación geométrica sigue siendo la misma. Por eso el operador para estimar con el MCO se llama "matriz de proyección" 
 
