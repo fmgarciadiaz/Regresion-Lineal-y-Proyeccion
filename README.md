@@ -122,6 +122,7 @@ $\cos(\pi/2) = 0 =  \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B
 
 19. Recapitulemos. El (MCO) minimiza los errores cuadráticos. El método de Mínimas Desviaciones Absolutas (MAD) minimiza los errores absolutos. 
 
+
 **MCO:** minimiza la suma de *errores cuadráticos*
 
 $y = \hat{y} + \hat{e} = x\beta + \hat{e}$ con un $\beta$ que minimiza  
@@ -133,6 +134,7 @@ $argmin \space\beta\space \lvert\lvert\hat{e}\rvert\rvert_{mco}=\sum_{i=1}^{n}\h
 **MAD:** minimiza la suma de *desviaciones absolutas*
 
  $argmin \space\beta\space\lvert\lvert\hat{e}\rvert\rvert_{mad}=\sum_{i=1}^{n}\lvert\hat{e_i}\rvert=\sum_{i=1}^{n}\lvert y_i-\hat{y}_i\rvert=\sum_{i=1}^{n}\lvert x_i\beta-y_i\rvert$
+
 
 
 20. La equivalencia formal con el ejercicio que planteamos antes es evidente (salvando el detalle del que tomamos nota para el caso euclidiano sobre minimizar la raíz una función positiva). Pero **visualizar esta equivalencia es mucho más interesante que plasmarla formalmente**.
